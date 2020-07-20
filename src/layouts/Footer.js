@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
 
 export default function Footer() {
-    return (
-        <div className="footer red-border">
-            Footer Layout
-        </div>
-    )
+  const Footer = styled.div`
+    height: 10%;
+  `;
+
+  return <Footer className="red-border">Footer Layout</Footer>;
 }

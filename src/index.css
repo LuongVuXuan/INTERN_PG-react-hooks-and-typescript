@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin: 0px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -24,14 +24,6 @@ code {
   padding: 10px;
 }
 
-.side-bar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 300px;
-  height: 100vh;
-}
-
 .content {
   position: absolute;
   left: 300px;
@@ -39,17 +31,4 @@ code {
   margin-left: 2px;
   width: calc(100% - 302px);
   height: 100%;
-}
-
-.header {
-  height: 10%;
-}
-
-.container {
-  height: calc(80% - 4px);
-  margin: 2px 0;
-}
-
-.footer {
-  height: 10%;
 }

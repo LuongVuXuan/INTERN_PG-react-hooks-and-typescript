@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
 
 export default function Header() {
-    return (
-        <div className="header red-border">
-            Header Layout
-        </div>
-    )
+  const Header = styled.div`
+    height: 10%;
+  `;
+
+  return <Header className="red-border">Header Layout</Header>;
 }
