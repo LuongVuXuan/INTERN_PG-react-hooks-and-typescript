@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1b84f32c9bb8c1e416b9c58957836bb4",
+    "revision": "0b917fe416623e9cd361285203889fc8",
     "url": "/INTERN_PG-react-hooks-and-typescript/index.html"
   },
   {
-    "revision": "dd7b5b0262a604a1778a",
-    "url": "/INTERN_PG-react-hooks-and-typescript/static/css/main.3669c503.chunk.css"
+    "revision": "9bfa40d3c74fe513c303",
+    "url": "/INTERN_PG-react-hooks-and-typescript/static/css/main.e27c1f70.chunk.css"
   },
   {
     "revision": "892b3aee573e91aaa78b",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/INTERN_PG-react-hooks-and-typescript/static/js/2.bef03d62.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "dd7b5b0262a604a1778a",
-    "url": "/INTERN_PG-react-hooks-and-typescript/static/js/main.5341474c.chunk.js"
+    "revision": "9bfa40d3c74fe513c303",
+    "url": "/INTERN_PG-react-hooks-and-typescript/static/js/main.1cca7f6e.chunk.js"
   },
   {
     "revision": "a5ed184943ed86b1c95a",
