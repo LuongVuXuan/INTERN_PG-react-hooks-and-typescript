@@ -1,18 +1,17 @@
 import React from "react";
 import SideBar from "./layouts/SideBar";
-import Header from "./layouts/Header";
+import Header from "./layouts/header/Header";
 import Container from "./layouts/Container";
 import Footer from "./layouts/Footer";
 
 function App() {
   return (
-    <div className="App">
+    <div className="wrapper">
+      <Header />
       <SideBar />
-      <div className="content">
-        <Header />
-        <Container />
-        <Footer />
-      </div>
+      {/* Container sẽ lại gồm content header */}
+      <Container />
+      <Footer />
     </div>
   );
 }
