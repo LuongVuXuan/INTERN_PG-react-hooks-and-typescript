@@ -30,7 +30,7 @@ export default function LoginPage() {
     else setPassword(e.target.value);
   };
 
-  if (isAuthen) return <Redirect to="/" />;
+  if (isAuthen) return <Redirect to="/index" />;
   return (
     <div className="login-box">
       <div className="login-logo">
