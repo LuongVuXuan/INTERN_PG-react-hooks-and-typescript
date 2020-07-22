@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/INTERN_PG-react-hooks-and-typescript/static/css/main.e27c1f70.chunk.css",
-    "main.js": "/INTERN_PG-react-hooks-and-typescript/static/js/main.1cca7f6e.chunk.js",
-    "main.js.map": "/INTERN_PG-react-hooks-and-typescript/static/js/main.1cca7f6e.chunk.js.map",
+    "main.css": "/INTERN_PG-react-hooks-and-typescript/static/css/main.aaa31212.chunk.css",
+    "main.js": "/INTERN_PG-react-hooks-and-typescript/static/js/main.ba057c98.chunk.js",
+    "main.js.map": "/INTERN_PG-react-hooks-and-typescript/static/js/main.ba057c98.chunk.js.map",
     "runtime-main.js": "/INTERN_PG-react-hooks-and-typescript/static/js/runtime-main.97088dde.js",
     "runtime-main.js.map": "/INTERN_PG-react-hooks-and-typescript/static/js/runtime-main.97088dde.js.map",
-    "static/js/2.bef03d62.chunk.js": "/INTERN_PG-react-hooks-and-typescript/static/js/2.bef03d62.chunk.js",
-    "static/js/2.bef03d62.chunk.js.map": "/INTERN_PG-react-hooks-and-typescript/static/js/2.bef03d62.chunk.js.map",
+    "static/js/2.b4cf8dee.chunk.js": "/INTERN_PG-react-hooks-and-typescript/static/js/2.b4cf8dee.chunk.js",
+    "static/js/2.b4cf8dee.chunk.js.map": "/INTERN_PG-react-hooks-and-typescript/static/js/2.b4cf8dee.chunk.js.map",
     "index.html": "/INTERN_PG-react-hooks-and-typescript/index.html",
-    "precache-manifest.be0a1812ca6a3b636fc49d3fe7b0ecb4.js": "/INTERN_PG-react-hooks-and-typescript/precache-manifest.be0a1812ca6a3b636fc49d3fe7b0ecb4.js",
+    "precache-manifest.0a08847245a83cfaa0cffcbd6385db66.js": "/INTERN_PG-react-hooks-and-typescript/precache-manifest.0a08847245a83cfaa0cffcbd6385db66.js",
     "service-worker.js": "/INTERN_PG-react-hooks-and-typescript/service-worker.js",
-    "static/css/main.e27c1f70.chunk.css.map": "/INTERN_PG-react-hooks-and-typescript/static/css/main.e27c1f70.chunk.css.map",
-    "static/js/2.bef03d62.chunk.js.LICENSE.txt": "/INTERN_PG-react-hooks-and-typescript/static/js/2.bef03d62.chunk.js.LICENSE.txt"
+    "static/css/main.aaa31212.chunk.css.map": "/INTERN_PG-react-hooks-and-typescript/static/css/main.aaa31212.chunk.css.map",
+    "static/js/2.b4cf8dee.chunk.js.LICENSE.txt": "/INTERN_PG-react-hooks-and-typescript/static/js/2.b4cf8dee.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.97088dde.js",
-    "static/js/2.bef03d62.chunk.js",
-    "static/css/main.e27c1f70.chunk.css",
-    "static/js/main.1cca7f6e.chunk.js"
+    "static/js/2.b4cf8dee.chunk.js",
+    "static/css/main.aaa31212.chunk.css",
+    "static/js/main.ba057c98.chunk.js"
   ]
 }
