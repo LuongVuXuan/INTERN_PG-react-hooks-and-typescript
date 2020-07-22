@@ -1,18 +1,16 @@
 import React from "react";
-import SideBar from "./layouts/SideBar";
-import Header from "./layouts/header/Header";
-import Container from "./layouts/Container";
-import Footer from "./layouts/Footer";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import LoggedInPage from "./pages/LoggedInPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
-    <div className="wrapper">
-      <Header />
-      <SideBar />
-      {/* Container sẽ lại gồm content header */}
-      <Container />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/login" component={LoginPage} />
+        <Route path="/" component={LoggedInPage} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
