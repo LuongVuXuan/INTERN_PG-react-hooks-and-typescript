@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/INTERN_PG-react-hooks-and-typescript/static/css/main.f67d7fee.chunk.css",
-    "main.js": "/INTERN_PG-react-hooks-and-typescript/static/js/main.32e3f6ea.chunk.js",
-    "main.js.map": "/INTERN_PG-react-hooks-and-typescript/static/js/main.32e3f6ea.chunk.js.map",
+    "main.js": "/INTERN_PG-react-hooks-and-typescript/static/js/main.8ed008cc.chunk.js",
+    "main.js.map": "/INTERN_PG-react-hooks-and-typescript/static/js/main.8ed008cc.chunk.js.map",
     "runtime-main.js": "/INTERN_PG-react-hooks-and-typescript/static/js/runtime-main.97088dde.js",
     "runtime-main.js.map": "/INTERN_PG-react-hooks-and-typescript/static/js/runtime-main.97088dde.js.map",
     "static/js/2.f3d4e01b.chunk.js": "/INTERN_PG-react-hooks-and-typescript/static/js/2.f3d4e01b.chunk.js",
     "static/js/2.f3d4e01b.chunk.js.map": "/INTERN_PG-react-hooks-and-typescript/static/js/2.f3d4e01b.chunk.js.map",
     "index.html": "/INTERN_PG-react-hooks-and-typescript/index.html",
-    "precache-manifest.f63ad96ae8232c5d8920d3d4785ff82f.js": "/INTERN_PG-react-hooks-and-typescript/precache-manifest.f63ad96ae8232c5d8920d3d4785ff82f.js",
+    "precache-manifest.4e05ef953c22cf2d549027a8789c6c41.js": "/INTERN_PG-react-hooks-and-typescript/precache-manifest.4e05ef953c22cf2d549027a8789c6c41.js",
     "service-worker.js": "/INTERN_PG-react-hooks-and-typescript/service-worker.js",
     "static/css/main.f67d7fee.chunk.css.map": "/INTERN_PG-react-hooks-and-typescript/static/css/main.f67d7fee.chunk.css.map",
     "static/js/2.f3d4e01b.chunk.js.LICENSE.txt": "/INTERN_PG-react-hooks-and-typescript/static/js/2.f3d4e01b.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.97088dde.js",
     "static/js/2.f3d4e01b.chunk.js",
     "static/css/main.f67d7fee.chunk.css",
-    "static/js/main.32e3f6ea.chunk.js"
+    "static/js/main.8ed008cc.chunk.js"
   ]
 }
