@@ -29,7 +29,7 @@ export default function SimpleTable() {
     return (
       <tr key={user.id}>
         <td>{user.id}</td>
-        <td>{moment(user.createdAt).calendar()}</td>
+        <td>{moment(user.createdAt).format('HH:mm - DD/MM/YYYY')}</td>
         <td>{user.name}</td>
         <td>{user.email}</td>
         <td>{user.username}</td>
