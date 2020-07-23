@@ -12,7 +12,7 @@ function App() {
           component={LoginPage}
           exact
         />
-        <Route path="/index" component={LoggedInPage} />
+        <Route path={process.env.PUBLIC_URL + "/index"} component={LoggedInPage} />
       </Switch>
     </BrowserRouter>
   );

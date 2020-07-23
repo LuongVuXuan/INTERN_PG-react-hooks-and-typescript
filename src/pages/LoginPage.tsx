@@ -30,7 +30,7 @@ export default function LoginPage() {
     else setPassword(e.target.value);
   };
 
-  if (isAuthen) return <Redirect to="/index" />;
+  if (isAuthen) return <Redirect to={process.env.PUBLIC_URL + "/index"} />;
   return (
     <div className="login-box">
       <div className="login-logo">
