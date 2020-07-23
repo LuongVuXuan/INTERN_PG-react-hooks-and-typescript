@@ -7,7 +7,11 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={LoginPage} exact/>
+        <Route
+          path={process.env.PUBLIC_URL + "/"}
+          component={LoginPage}
+          exact
+        />
         <Route path="/index" component={LoggedInPage} />
       </Switch>
     </BrowserRouter>
