@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "69195923c1338f6e082e2039ec64d210",
+    "revision": "f2510df0fa85f272965f78054e86609e",
     "url": "/INTERN_PG-react-hooks-and-typescript/index.html"
   },
   {
