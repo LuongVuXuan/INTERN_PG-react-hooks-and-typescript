@@ -73,7 +73,7 @@ export default function Header() {
                 {/* User image */}
                 <li className="user-header">
                   <img
-                    src={process.env.PUBLIC_URL + "dist/img/user2-160x160.jpg"}
+                    src={process.env.PUBLIC_URL + "/dist/img/user2-160x160.jpg"}
                     className="img-circle"
                     alt="User Image"
                   />
