@@ -29,16 +29,13 @@ export default function SimpleTable() {
     return (
       <tr key={user.id}>
         <td>{user.id}</td>
-        <td>{moment(user.createdAt).format('HH:mm - DD/MM/YYYY')}</td>
+        <td>{moment(user.createdAt).format("HH:mm - DD/MM/YYYY")}</td>
         <td>{user.name}</td>
         <td>{user.email}</td>
         <td>{user.username}</td>
         <td>{user.balance}</td>
         <td style={{ textAlign: "center" }}>
-          <input
-            type="checkbox"
-            defaultChecked={user.factor_authentication}
-          />
+          <input type="checkbox" defaultChecked={user.factor_authentication} />
         </td>
         <td>{user.user_ref}</td>
       </tr>

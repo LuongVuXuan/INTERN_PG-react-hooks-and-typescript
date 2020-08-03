@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Alert() {
+export default function Alert(props: any) {
   return (
     <div className="alert alert-danger alert-dismissible" id="login-alert">
       <button
@@ -12,7 +12,7 @@ export default function Alert() {
         ×
       </button>
       <h4>
-        <i className="icon fa fa-ban" /> Sai mật khẩu hoặc password
+        <i className="icon fa fa-ban" /> {props.message}
       </h4>
     </div>
   );

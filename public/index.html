@@ -26,28 +26,53 @@
     -->
 
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/bootstrap/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="%PUBLIC_URL%/bootstrap/css/bootstrap.min.css"
+    />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
     <!-- Theme style -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/dist/css/AdminLTE.min.css" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/dist/css/skins/all-skins.min.css">
+    <link
+      rel="stylesheet"
+      href="%PUBLIC_URL%/dist/css/skins/all-skins.min.css"
+    />
     <!-- iCheck -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/plugins/iCheck/flat/blue.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/plugins/iCheck/flat/blue.css" />
     <!-- Morris chart -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/plugins/morris/morris.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/plugins/morris/morris.css" />
     <!-- jvectormap -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <link
+      rel="stylesheet"
+      href="%PUBLIC_URL%/plugins/jvectormap/jquery-jvectormap-1.2.2.css"
+    />
     <!-- Date Picker -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/plugins/datepicker/datepicker3.css">
+    <link
+      rel="stylesheet"
+      href="%PUBLIC_URL%/plugins/datepicker/datepicker3.css"
+    />
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/plugins/daterangepicker/daterangepicker-bs3.css">
+    <link
+      rel="stylesheet"
+      href="%PUBLIC_URL%/plugins/daterangepicker/daterangepicker-bs3.css"
+    />
     <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link
+      rel="stylesheet"
+      href="%PUBLIC_URL%/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"
+    />
+    <link rel="stylesheet" href="%PUBLIC_URL%/plugins/iCheck/square/blue.css" />
     <title>React App</title>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
@@ -64,7 +89,7 @@
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-      $.widget.bridge('uibutton', $.ui.button);
+      $.widget.bridge("uibutton", $.ui.button);
     </script>
     <!-- Bootstrap 3.3.5 -->
     <script src="%PUBLIC_URL%/bootstrap/js/bootstrap.min.js"></script>
@@ -95,5 +120,20 @@
     <script src="%PUBLIC_URL%/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="%PUBLIC_URL%/dist/js/demo.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+      integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="%PUBLIC_URL%/plugins/iCheck/icheck.min.js"></script>
+    <script>
+      $(function () {
+        $("input").iCheck({
+          checkboxClass: "icheckbox_square-blue",
+          radioClass: "iradio_square-blue",
+          increaseArea: "20%" /* optional */,
+        });
+      });
+    </script>
   </body>
 </html>

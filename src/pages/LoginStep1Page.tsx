@@ -1,36 +1,104 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Alert from "../layouts/Alert";
+import axios from "axios";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAuthen, setIsAuthen] = useState(false);
+  const [messageAlert, setMessageAlert] = useState("");
+  const [isRemember, setIsRemember] = useState(false);
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (email === "admin" && password === "admin") setIsAuthen(true);
-    else {
-      setPassword("");
-      console.log("Hien thi UI");
-
-      let alert = document.getElementById("login-alert");
+    let alert = document.getElementById("login-alert");
+    // Kiểm tra email hợp lệ hay không
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(email)) {
       if (alert) {
+        setMessageAlert("Invalid email!");
         alert.style.display = "block";
 
         setTimeout(() => {
           if (alert) alert.style.display = "none";
-        }, 3000);
+        }, 5000);
+      }
+    } else {
+      // Kiểm tra password trống hay không
+      if (password.length == 0) {
+        if (alert) alert.style.display = "none";
+        if (alert) {
+          setMessageAlert("Password not be empty");
+          alert.style.display = "block";
+
+          setTimeout(() => {
+            if (alert) alert.style.display = "none";
+          }, 3000);
+        }
+      } else {
+        // Oke hết từ email đến password
+        //---- giờ lấy giá trị remember
+        let checkbox = document.getElementsByClassName(
+          "icheckbox_square-blue"
+        )[1];
+        setIsRemember(
+          checkbox ? Boolean(checkbox.getAttribute("aria-checked")) : false
+        );
+
+        // con quay loading
+        if (alert) {
+          setMessageAlert("Thay thế tạm cho vòng quay loading");
+          alert.style.display = "block";
+        }
+        console.log(email, password, isRemember);
+        await axios
+          .post("https://api3.bitwage.com/sandbox/user/auth/login", {
+            username: email,
+            password: password,
+            remember_me: isRemember,
+          })
+          .then((res) => {
+            console.log(res);
+            setIsAuthen(true);
+          })
+          .catch((err) => {
+            if (alert) alert.style.display = "none";
+            if (alert) {
+              setMessageAlert("Wrong Password or User!");
+              alert.style.display = "block";
+
+              setTimeout(() => {
+                if (alert) alert.style.display = "none";
+              }, 5000);
+            }
+          });
       }
     }
   };
 
+  // set state email and pass when change input email or password
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.id === "email") setEmail(e.target.value);
     else setPassword(e.target.value);
   };
 
-  if (isAuthen) return <Redirect to={process.env.PUBLIC_URL + "/index"} />;
+  // alert validate email when not focus
+  const validateEmail = () => {
+    let alert = document.getElementById("login-alert");
+    if (alert) alert.style.display = "none";
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(email)) {
+      if (alert) {
+        setMessageAlert("Invalid email!");
+        alert.style.display = "block";
+
+        setTimeout(() => {
+          if (alert) alert.style.display = "none";
+        }, 5000);
+      }
+    }
+  };
+
+  if (isAuthen) return <Redirect to={process.env.PUBLIC_URL + "/verify"} />;
   return (
     <div className="login-box">
       <div className="login-logo">
@@ -49,6 +117,7 @@ export default function LoginPage() {
               placeholder="Email"
               id="email"
               onChange={handleChange}
+              onBlur={validateEmail}
               value={email}
             />
             <span className="glyphicon glyphicon-envelope form-control-feedback" />
@@ -64,7 +133,7 @@ export default function LoginPage() {
             />
             <span className="glyphicon glyphicon-lock form-control-feedback" />
           </div>
-          <Alert />
+          <Alert message={messageAlert} />
           <div className="row">
             <div className="col-xs-8">
               <div className="checkbox icheck">

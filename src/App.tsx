@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LoggedInPage from "./pages/LoggedInPage";
-import LoginPage from "./pages/LoginPage";
+import LoginStep1Page from "./pages/LoginStep1Page";
+import LoginStep2Page from "./pages/LoginStep2Page";
 
 function App() {
   return (
@@ -9,10 +10,17 @@ function App() {
       <Switch>
         <Route
           path={process.env.PUBLIC_URL + "/"}
-          component={LoginPage}
+          component={LoginStep1Page}
           exact
         />
-        <Route path={process.env.PUBLIC_URL + "/index"} component={LoggedInPage} />
+        <Route
+          path={process.env.PUBLIC_URL + "/verify"}
+          component={LoginStep2Page}
+        />
+        <Route
+          path={process.env.PUBLIC_URL + "/index"}
+          component={LoggedInPage}
+        />
       </Switch>
     </BrowserRouter>
   );
