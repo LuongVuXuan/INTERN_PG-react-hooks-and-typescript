@@ -8,10 +8,10 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [isAuthen, setIsAuthen] = useState(false);
   const [messageAlert, setMessageAlert] = useState("");
-  const [isRemember, setIsRemember] = useState(false);
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     let alert = document.getElementById("login-alert");
     // Kiểm tra email hợp lệ hay không
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(email)) {
@@ -41,9 +41,8 @@ export default function LoginPage() {
         let checkbox = document.getElementsByClassName(
           "icheckbox_square-blue"
         )[1];
-        setIsRemember(
-          checkbox ? Boolean(checkbox.getAttribute("aria-checked")) : false
-        );
+        let isRemember =
+          checkbox.getAttribute("aria-checked") == "true" ? true : false;
 
         // con quay loading
         if (alert) {
@@ -58,10 +57,11 @@ export default function LoginPage() {
             remember_me: isRemember,
           })
           .then((res) => {
-            console.log(res);
+            console.log(res.data);
             setIsAuthen(true);
           })
           .catch((err) => {
+            setPassword("");
             if (alert) alert.style.display = "none";
             if (alert) {
               setMessageAlert("Wrong Password or User!");
