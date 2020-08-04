@@ -1,4 +1,5 @@
-body.hold-transition.skin-blue.sidebar-mini, body.skin-blue.sidebar-mini {
+body.hold-transition.skin-blue.sidebar-mini,
+body.skin-blue.sidebar-mini {
   height: 100vh;
 }
 
@@ -10,3 +11,128 @@ code {
 #login-alert {
   display: none;
 }
+
+.login-logo a,
+.register-logo a {
+  color: #fff;
+}
+
+/* css for login page step 2 */
+/* con quay loading */
+.loading {
+  background-color: #ff0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 9;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.2;
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+
+/* end conquay loading */
+
+.login-page-2 {
+  display: flex;
+  height: 100vh;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+}
+
+.card-center {
+  width: 40%;
+  height: 40%;
+  background-color: #fff;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.card-title {
+  z-index: 5;
+  position: relative;
+  top: -20px;
+  background-color: #4285f4;
+  border-radius: 5px;
+  width: 90%;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.card-center i.fa-key {
+  transform: rotateY(180deg);
+}
+
+.card-title p {
+  display: inline;
+  margin-left: 10px;
+}
+
+.card-content {
+  color: #000;
+  text-align: center;
+}
+
+.card-content .text-blue {
+  color: #4285f4;
+}
+
+.card-content .text-gray {
+  color: #fff;
+}
+
+.card-content #access-code {
+  border: none;
+  border-bottom: 1px solid #000;
+  margin-left: 10px;
+  font-size: 15px;
+  padding: 4px;
+  width: 50%;
+}
+
+.two-button {
+  margin-top: 20px;
+}
+
+.two-button .btn {
+  /* border: 1px solid #000; */
+  width: 100px;
+  margin: 10px;
+  color: #fff;
+  transition: 0.3s;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.two-button .btn:hover {
+  opacity: 0.7;
+}
+
+.two-button .btn.btn-resend {
+  background: #2bbbad;
+}
+
+.two-button .btn.btn-submit {
+  background: #85b0f8;
+}
+
+.card-content .company {
+  font-size: 14px;
+}
+
+.card-content .alert-access-code {
+  font-size: 14px;
+  color: #f00;
+  margin-top: 15px;
+  visibility: hidden;
+  background-color: #FFFF00;
+  display: inline-block;
+}
+
+/* -----end css for login page step 2 -----*/

@@ -8,6 +8,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [isAuthen, setIsAuthen] = useState(false);
   const [messageAlert, setMessageAlert] = useState("");
+  const [params, setParams] = useState(null);
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ export default function LoginPage() {
 
         setTimeout(() => {
           if (alert) alert.style.display = "none";
-        }, 5000);
+        }, 3000);
       }
     } else {
       // Kiểm tra password trống hay không
@@ -57,7 +58,8 @@ export default function LoginPage() {
             remember_me: isRemember,
           })
           .then((res) => {
-            console.log(res.data);
+            localStorage.setItem("sms_count", res.data.sms_count);
+            setParams(res.data);
             setIsAuthen(true);
           })
           .catch((err) => {
@@ -69,7 +71,7 @@ export default function LoginPage() {
 
               setTimeout(() => {
                 if (alert) alert.style.display = "none";
-              }, 5000);
+              }, 3000);
             }
           });
       }
@@ -93,12 +95,20 @@ export default function LoginPage() {
 
         setTimeout(() => {
           if (alert) alert.style.display = "none";
-        }, 5000);
+        }, 3000);
       }
     }
   };
 
-  if (isAuthen) return <Redirect to={process.env.PUBLIC_URL + "/verify"} />;
+  if (isAuthen)
+    return (
+      <Redirect
+        to={{
+          pathname: process.env.PUBLIC_URL + "/verify",
+          state: params,
+        }}
+      />
+    );
   return (
     <div className="login-box">
       <div className="login-logo">
@@ -177,6 +187,11 @@ export default function LoginPage() {
                       }}
                     />
                   </div>{" "}
+                  {/* <input
+                    type="checkbox"
+                    name="savepassword"
+                    id="save-password"
+                  />{" "} */}
                   Remember Me
                 </label>
               </div>
