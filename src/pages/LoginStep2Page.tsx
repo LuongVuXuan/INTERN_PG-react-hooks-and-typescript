@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { SignInTwo, SignInOne } from "../store/actions/loggedActions";
 
 export default function LoginStep2Page(props: any) {
-  let { phone_number, username, uuid } = props.location.state;
+  const isLogged = useSelector((state: any) => state.logged);
+  const dispatch = useDispatch();
+
+  let { phone_number, username, uuid } = props.location.state
+    ? props.location.state
+    : { phone_number: "", username: "", uuid: "" };
   const [accessToken, setAccessToken] = useState("");
   const [count, setCount] = useState(Number(localStorage.getItem("sms_count")));
-  const [isAuthen, setIsAuthen] = useState(false);
+
+  useEffect(() => {
+    if (Boolean(localStorage.getItem("stepOne"))) dispatch(SignInOne());
+  }, []);
 
   const handleOnChange = (e: any) => {
     setAccessToken(e.target.value);
@@ -29,10 +39,14 @@ export default function LoginStep2Page(props: any) {
       .then((res) => {
         loading.style.display = "none";
         localStorage.setItem("user_info", JSON.stringify(res.data));
-        setIsAuthen(true);
+        // setIsAuthen(true);
+        // lưu đã qua đăng nhập bước 2 vào trong store
+        localStorage.setItem("stepTwo", "true");
+        dispatch(SignInTwo());
       })
       .catch((err) => {
         console.log(err);
+        setAccessToken("");
         let out = count - 1;
 
         loading.style.display = "none";
@@ -49,13 +63,28 @@ export default function LoginStep2Page(props: any) {
       });
   };
 
-  return isAuthen ? (
-    <Redirect
-      to={{
-        pathname: process.env.PUBLIC_URL + "/index",
-      }}
-    />
-  ) : (
+  if (isLogged.stepTwo)
+    return (
+      <Redirect
+        to={{
+          pathname: process.env.PUBLIC_URL + "/index",
+        }}
+      />
+    );
+
+  if (props.location.state == null)
+    return (
+      <Redirect
+        to={{
+          pathname: process.env.PUBLIC_URL + "/",
+        }}
+      />
+    );
+
+  localStorage.setItem("stepOne", "true");
+  localStorage.setItem("stepTwo", "false");
+
+  return (
     <div className="login-page-2">
       <div className="loading">
         <img src={process.env.PUBLIC_URL + "/loading.gif"} />
@@ -68,8 +97,10 @@ export default function LoginStep2Page(props: any) {
         <div className="card-content">
           <p>Enter the access code sent via SMS to</p>
           <p className="text-blue">
-            +{phone_number.slice(0, 2)} XXXXXXX{" "}
-            {phone_number.slice(phone_number.length - 2, phone_number.length)}
+            +{phone_number ? phone_number.slice(0, 2) : "xx"} xxxxxxx{" "}
+            {phone_number
+              ? phone_number.slice(phone_number.length - 2, phone_number.length)
+              : "xx"}
           </p>
 
           <i className="fa fa-key text-gray"></i>
@@ -79,6 +110,7 @@ export default function LoginStep2Page(props: any) {
             id="access-code"
             placeholder="Access Code"
             onChange={(e) => handleOnChange(e)}
+            value={accessToken}
           />
           <div>
             <p className="alert-access-code">Invalid Access Code</p>

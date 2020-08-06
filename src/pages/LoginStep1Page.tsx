@@ -2,14 +2,19 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Alert from "../layouts/Alert";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { SignInOne, SignInTwo } from "../store/actions/loggedActions";
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
+  const isLogged = useSelector((state: any) => state.logged);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isAuthen, setIsAuthen] = useState(false);
   const [messageAlert, setMessageAlert] = useState("");
   const [params, setParams] = useState(null);
 
+  // sumbmit bất đồng bộ
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -58,9 +63,18 @@ export default function LoginPage() {
             remember_me: isRemember,
           })
           .then((res) => {
+            // Nhớ TK mật khẩu
+            if (isRemember) {
+              localStorage.setItem("remember_me", isRemember.toString());
+              localStorage.setItem("email", email.toString());
+              localStorage.setItem("password", password.toString());
+            }
+
             localStorage.setItem("sms_count", res.data.sms_count);
             setParams(res.data);
-            setIsAuthen(true);
+
+            localStorage.setItem("stepOne", "true");
+            dispatch(SignInOne());
           })
           .catch((err) => {
             setPassword("");
@@ -78,13 +92,13 @@ export default function LoginPage() {
     }
   };
 
-  // set state email and pass when change input email or password
+  // set state email or password khi thay đổi 1 trong 2
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.id === "email") setEmail(e.target.value);
     else setPassword(e.target.value);
   };
 
-  // alert validate email when not focus
+  // Thông báo validate email khi không còn focus ở input email
   const validateEmail = () => {
     let alert = document.getElementById("login-alert");
     if (alert) alert.style.display = "none";
@@ -100,7 +114,8 @@ export default function LoginPage() {
     }
   };
 
-  if (isAuthen)
+  // Đã đăng nhập bước 1 xong thì vào bước 2
+  if (isLogged.stepOne)
     return (
       <Redirect
         to={{
@@ -109,6 +124,10 @@ export default function LoginPage() {
         }}
       />
     );
+
+  // Ko thì ra cái hiện tại
+  localStorage.setItem("stepOne", "false");
+  localStorage.setItem("stepTwo", "false");
   return (
     <div className="login-box">
       <div className="login-logo">
