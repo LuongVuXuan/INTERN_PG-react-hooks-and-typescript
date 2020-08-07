@@ -3,6 +3,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SignInTwo, SignInOne } from "../store/actions/loggedActions";
+import { checkUser } from "../layouts/simple-table/SimpleTable";
 
 export default function LoginStep2Page(props: any) {
   const isLogged = useSelector((state: any) => state.logged);
@@ -14,9 +15,10 @@ export default function LoginStep2Page(props: any) {
   const [accessToken, setAccessToken] = useState("");
   const [count, setCount] = useState(Number(localStorage.getItem("sms_count")));
 
-  useEffect(() => {
-    if (Boolean(localStorage.getItem("stepOne"))) dispatch(SignInOne());
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("stepOne") == "true") dispatch(SignInOne());
+  //   if (localStorage.getItem("stepOne") == "false") dispatch(SignInTwo());
+  // }, []);
 
   const handleOnChange = (e: any) => {
     setAccessToken(e.target.value);
@@ -63,11 +65,21 @@ export default function LoginStep2Page(props: any) {
       });
   };
 
+  if (checkUser())
+    return (
+      <Redirect
+        to={{
+          pathname: process.env.PUBLIC_URL + "/index",
+        }}
+      />
+    );
+
   if (isLogged.stepTwo)
     return (
       <Redirect
         to={{
           pathname: process.env.PUBLIC_URL + "/index",
+          state: { isLogged },
         }}
       />
     );

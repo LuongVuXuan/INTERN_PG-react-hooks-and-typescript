@@ -14,6 +14,19 @@ import { fecthRequested } from "../../store/actions/usesActions";
 //   factor_authentication: boolean;
 //   user_ref: string;
 // }
+export const checkUser = () => {
+  const remember_me =
+    localStorage.getItem("remember_me") == "true" ? true : false;
+  const user_info = localStorage.getItem("user_info");
+  const { apikey, apisecret } = user_info
+    ? JSON.parse(user_info)
+    : { apikey: "", apisecret: "" };
+
+  // const stepTwo = localStorage.getItem("stepTwo") == "true" ? true : false;
+
+  if (remember_me && apikey && apisecret) return true;
+  return false;
+};
 
 function SimpleTable() {
   const userApi = useSelector((state: any) => state.users.users);
@@ -28,12 +41,26 @@ function SimpleTable() {
   }, []);
 
   useEffect(() => {
-    if (userApi) Show(0, 10);
+    if (userApi) showTen(0, 10);
   }, [userApi]);
 
-  const Show = (a: number, b: number) => {
+  const showTen = (a: number, b: number) => {
     setUserShow(userApi.slice(a, b));
   };
+
+  // export const checkUser = () => {
+  //   const remember_me =
+  //     localStorage.getItem("remember_me") == "true" ? true : false;
+  //   const user_info = localStorage.getItem("user_info");
+  //   const { apikey, apisecret } = user_info
+  //     ? JSON.parse(user_info)
+  //     : { apikey: "", apisecret: "" };
+
+  //   const stepTwo = localStorage.getItem("stepTwo") == "true" ? true : false;
+
+  //   if ((remember_me && apikey && apisecret) || stepTwo) return true;
+  //   return false;
+  // };
 
   const userRowTable = userShow ? (
     userShow.map((user: any) => {
@@ -61,7 +88,7 @@ function SimpleTable() {
     </tr>
   );
 
-  return isLogged.stepTwo ? (
+  return checkUser() || isLogged.stepTwo ? (
     <div className="row">
       <div className="col-md-12">
         <div className="box">
@@ -93,23 +120,28 @@ function SimpleTable() {
                 <a href="#">«</a>
               </li>
               <li>
-                <a href="#" onClick={() => Show(0, 10)}>
+                <a href="#" onClick={() => showTen(0, 10)}>
                   1
                 </a>
               </li>
               <li>
-                <a href="#" onClick={() => Show(10, 20)}>
+                <a href="#" onClick={() => showTen(10, 20)}>
                   2
                 </a>
               </li>
               <li>
-                <a href="#" onClick={() => Show(20, 30)}>
+                <a href="#" onClick={() => showTen(20, 30)}>
                   3
                 </a>
               </li>
               <li>
-                <a href="#" onClick={() => Show(30, 40)}>
+                <a href="#" onClick={() => showTen(30, 40)}>
                   4
+                </a>
+              </li>
+              <li>
+                <a href="#" onClick={() => showTen(40, 50)}>
+                  5
                 </a>
               </li>
               <li>

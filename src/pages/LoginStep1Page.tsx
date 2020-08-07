@@ -3,7 +3,8 @@ import { Redirect } from "react-router-dom";
 import Alert from "../layouts/Alert";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { SignInOne, SignInTwo } from "../store/actions/loggedActions";
+import { SignInOne } from "../store/actions/loggedActions";
+import { checkUser } from "../layouts/simple-table/SimpleTable";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -65,9 +66,9 @@ export default function LoginPage() {
           .then((res) => {
             // Nhớ TK mật khẩu
             if (isRemember) {
-              localStorage.setItem("remember_me", isRemember.toString());
-              localStorage.setItem("email", email.toString());
-              localStorage.setItem("password", password.toString());
+              localStorage.setItem("remember_me", "true");
+              // localStorage.setItem("email", email.toString());
+              // localStorage.setItem("password", password.toString());
             }
 
             localStorage.setItem("sms_count", res.data.sms_count);
@@ -114,8 +115,16 @@ export default function LoginPage() {
     }
   };
 
+  if (checkUser())
+    return (
+      <Redirect
+        to={{
+          pathname: process.env.PUBLIC_URL + "/index",
+        }}
+      />
+    );
   // Đã đăng nhập bước 1 xong thì vào bước 2
-  if (isLogged.stepOne)
+  else if (isLogged.stepOne)
     return (
       <Redirect
         to={{
@@ -124,129 +133,134 @@ export default function LoginPage() {
         }}
       />
     );
-
-  // Ko thì ra cái hiện tại
-  localStorage.setItem("stepOne", "false");
-  localStorage.setItem("stepTwo", "false");
-  return (
-    <div className="login-box">
-      <div className="login-logo">
-        <a href="#">
-          <b>Admin</b>LTE
-        </a>
-      </div>
-      {/* /.login-logo */}
-      <div className="login-box-body">
-        <p className="login-box-msg">Sign in to start your session</p>
-        <form onSubmit={submitHandler}>
-          <div className="form-group has-feedback">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Email"
-              id="email"
-              onChange={handleChange}
-              onBlur={validateEmail}
-              value={email}
-            />
-            <span className="glyphicon glyphicon-envelope form-control-feedback" />
-          </div>
-          <div className="form-group has-feedback">
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Password"
-              id="password"
-              onChange={handleChange}
-              value={password}
-            />
-            <span className="glyphicon glyphicon-lock form-control-feedback" />
-          </div>
-          <Alert message={messageAlert} />
-          <div className="row">
-            <div className="col-xs-8">
-              <div className="checkbox icheck">
-                <label>
-                  <div
-                    className="icheckbox_square-blue"
-                    aria-checked="false"
-                    aria-disabled="false"
-                    style={{ position: "relative" }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        position: "absolute",
-                        top: "-20%",
-                        left: "-20%",
-                        display: "block",
-                        width: "140%",
-                        height: "140%",
-                        margin: 0,
-                        padding: 0,
-                        background: "rgb(255, 255, 255)",
-                        border: 0,
-                        opacity: 0,
-                      }}
-                    />
-                    <ins
-                      className="iCheck-helper"
-                      style={{
-                        position: "absolute",
-                        top: "-20%",
-                        left: "-20%",
-                        display: "block",
-                        width: "140%",
-                        height: "140%",
-                        margin: 0,
-                        padding: 0,
-                        background: "rgb(255, 255, 255)",
-                        border: 0,
-                        opacity: 0,
-                      }}
-                    />
-                  </div>{" "}
-                  {/* <input
+  else {
+    localStorage.setItem("stepOne", "false");
+    localStorage.setItem("stepTwo", "false");
+    localStorage.setItem("user_info", "");
+    localStorage.setItem("remember_me", "false");
+    return (
+      <div className="login-box">
+        <div className="login-logo">
+          <a href="#">
+            <b>Admin</b>LTE
+          </a>
+        </div>
+        {/* /.login-logo */}
+        <div className="login-box-body">
+          <p className="login-box-msg">Sign in to start your session</p>
+          <form onSubmit={submitHandler}>
+            <div className="form-group has-feedback">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Email"
+                id="email"
+                onChange={handleChange}
+                onBlur={validateEmail}
+                value={email}
+              />
+              <span className="glyphicon glyphicon-envelope form-control-feedback" />
+            </div>
+            <div className="form-group has-feedback">
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                id="password"
+                onChange={handleChange}
+                value={password}
+              />
+              <span className="glyphicon glyphicon-lock form-control-feedback" />
+            </div>
+            <Alert message={messageAlert} />
+            <div className="row">
+              <div className="col-xs-8">
+                <div className="checkbox icheck">
+                  <label>
+                    <div
+                      className="icheckbox_square-blue"
+                      aria-checked="false"
+                      aria-disabled="false"
+                      style={{ position: "relative" }}
+                    >
+                      <input
+                        type="checkbox"
+                        style={{
+                          position: "absolute",
+                          top: "-20%",
+                          left: "-20%",
+                          display: "block",
+                          width: "140%",
+                          height: "140%",
+                          margin: 0,
+                          padding: 0,
+                          background: "rgb(255, 255, 255)",
+                          border: 0,
+                          opacity: 0,
+                        }}
+                      />
+                      <ins
+                        className="iCheck-helper"
+                        style={{
+                          position: "absolute",
+                          top: "-20%",
+                          left: "-20%",
+                          display: "block",
+                          width: "140%",
+                          height: "140%",
+                          margin: 0,
+                          padding: 0,
+                          background: "rgb(255, 255, 255)",
+                          border: 0,
+                          opacity: 0,
+                        }}
+                      />
+                    </div>{" "}
+                    {/* <input
                     type="checkbox"
                     name="savepassword"
                     id="save-password"
                   />{" "} */}
-                  Remember Me
-                </label>
+                    Remember Me
+                  </label>
+                </div>
               </div>
+              {/* /.col */}
+              <div className="col-xs-4">
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block btn-flat"
+                >
+                  Sign In
+                </button>
+              </div>
+              {/* /.col */}
             </div>
-            {/* /.col */}
-            <div className="col-xs-4">
-              <button
-                type="submit"
-                className="btn btn-primary btn-block btn-flat"
-              >
-                Sign In
-              </button>
-            </div>
-            {/* /.col */}
+          </form>
+          <div className="social-auth-links text-center">
+            <p>- OR -</p>
+            <a
+              href="#"
+              className="btn btn-block btn-social btn-facebook btn-flat"
+            >
+              <i className="fa fa-facebook" /> Sign in using Facebook
+            </a>
+            <a
+              href="#"
+              className="btn btn-block btn-social btn-google btn-flat"
+            >
+              <i className="fa fa-google-plus" /> Sign in using Google+
+            </a>
           </div>
-        </form>
-        <div className="social-auth-links text-center">
-          <p>- OR -</p>
-          <a
-            href="#"
-            className="btn btn-block btn-social btn-facebook btn-flat"
-          >
-            <i className="fa fa-facebook" /> Sign in using Facebook
-          </a>
-          <a href="#" className="btn btn-block btn-social btn-google btn-flat">
-            <i className="fa fa-google-plus" /> Sign in using Google+
+          {/* /.social-auth-links */}
+          <a href="#">I forgot my password</a>
+          <br />
+          <a href="#" className="text-center">
+            Register a new membership
           </a>
         </div>
-        {/* /.social-auth-links */}
-        <a href="#">I forgot my password</a>
-        <br />
-        <a href="#" className="text-center">
-          Register a new membership
-        </a>
+        {/* /.login-box-body */}
       </div>
-      {/* /.login-box-body */}
-    </div>
-  );
+    );
+  }
 }

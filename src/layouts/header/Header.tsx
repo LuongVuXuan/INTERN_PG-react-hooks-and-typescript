@@ -26,6 +26,14 @@ export default function Header() {
     }
   };
 
+  const handleOnClick = () => {
+    localStorage.setItem("remember_me", "false");
+    localStorage.setItem("stepOne", "false");
+    localStorage.setItem("stepTwo", "false");
+    localStorage.setItem("user_info", "");
+    window.location.href = process.env.PUBLIC_URL + "/";
+  };
+
   return (
     <header className="main-header">
       {/* Logo */}
@@ -102,7 +110,11 @@ export default function Header() {
                     </a>
                   </div>
                   <div className="pull-right">
-                    <a href="#" className="btn btn-default btn-flat">
+                    <a
+                      href="#"
+                      className="btn btn-default btn-flat"
+                      onClick={handleOnClick}
+                    >
                       Sign out
                     </a>
                   </div>
